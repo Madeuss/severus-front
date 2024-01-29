@@ -1,13 +1,11 @@
+import LoginIllustration from 'assets/login-illustration.svg'
 import { Text, View } from 'react-native'
 
-import EditScreenInfo from '~/components/edit-screen-info'
-
-export default function TabTwoScreen() {
+export default function Login() {
   return (
     <View className={styles.container}>
-      <Text className={styles.title}>Tab Two</Text>
-      <View className={styles.separator} />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <Text>Severus</Text>
+      <LoginIllustration width="100%" height="70%" />
     </View>
   )
 }

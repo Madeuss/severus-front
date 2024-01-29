@@ -1,12 +1,12 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable, StyleSheet } from 'react-native';
+import FontAwesome from '@expo/vector-icons/FontAwesome'
+import { Link, Tabs } from 'expo-router'
+import { Pressable, StyleSheet } from 'react-native'
 
 function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
+  name: React.ComponentProps<typeof FontAwesome>['name']
+  color: string
 }) {
-  return <FontAwesome size={28} style={styles.tabBarIcon} {...props} />;
+  return <FontAwesome size={28} style={styles.tabBarIcon} {...props} />
 }
 
 export default function TabLayout() {
@@ -14,7 +14,9 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: 'black',
-      }}>
+        headerShown: false,
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
@@ -44,7 +46,7 @@ export default function TabLayout() {
         }}
       />
     </Tabs>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -54,4 +56,4 @@ const styles = StyleSheet.create({
   tabBarIcon: {
     marginBottom: -3,
   },
-});
+})
