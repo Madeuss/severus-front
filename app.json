@@ -3,7 +3,6 @@
     "name": "severus-front",
     "slug": "severus-front",
     "version": "1.0.0",
-
     "scheme": "severus-front",
     "web": {
       "bundler": "metro",
@@ -27,9 +26,11 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "softwareKeyboardLayoutMode": "adjustPan"
     },
     "android": {
+      "softwareKeyboardLayoutMode": "adjustPan",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"

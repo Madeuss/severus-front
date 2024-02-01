@@ -1,5 +1,5 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React from 'react'
+import { Text, View } from 'react-native'
 
 export default function EditScreenInfo({ path }: { path: string }) {
   return (
@@ -14,7 +14,7 @@ export default function EditScreenInfo({ path }: { path: string }) {
         </Text>
       </View>
     </View>
-  );
+  )
 }
 
 const styles = {
@@ -25,4 +25,4 @@ const styles = {
   helpLink: `py-4`,
   helpLinkText: `text-center`,
   homeScreenFilename: `my-2`,
-};
+}
