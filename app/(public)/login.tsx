@@ -4,12 +4,12 @@ import { useState } from 'react'
 import { KeyboardAvoidingView, Platform, Text, TouchableOpacity, View } from 'react-native'
 
 import styles from './styles'
-
 import colors from '~/colors'
+
 import Input from '~/components/custom-textinputs'
 import ForgotPasswordLink from '~/app/(public)/forgot-password-link'
 import { useTranslation } from 'react-i18next'
-import { useNavigation } from 'expo-router'
+import { Link } from 'expo-router'
 
 export default function Login() {
   const [form, setForm] = useState({ email: '', password: '' })
@@ -76,9 +76,9 @@ export default function Login() {
 
         <View style={styles.registerBox}>
           <Text style={styles.noAccountText}>{t('form.no_account')}</Text>
-          <TouchableOpacity onPress={handleGoToRegister}>
+          <Link push href="/register">
             <Text style={styles.registerText}>{t('form.register')}</Text>
-          </TouchableOpacity>
+          </Link>
         </View>
       </View>
     </KeyboardAvoidingView>
