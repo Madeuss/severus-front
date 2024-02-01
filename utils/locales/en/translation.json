@@ -11,6 +11,16 @@
         "register": "Register",
         "forgot_pwd": "Forgot password?"
       }
+    },
+    "register": {
+      "title": "Create your account",
+      "form": {
+        "name_label": "Name",
+        "username_label": "Username",
+        "email_label": "Email",
+        "password_label": "Password",
+        "register": "Register"
+      }
     }
   }
 }

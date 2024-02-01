@@ -11,6 +11,16 @@
         "register": "Registrarse",
         "forgot_pwd": "¿Olvidaste la contraseña?"
       }
+    },
+    "register": {
+      "title": "Crea tu cuenta",
+      "form": {
+        "name_label": "Nombre",
+        "username_label": "Apodo",
+        "email_label": "Correo electrónico",
+        "password_label": "Contraseña",
+        "register": "Crear cuenta"
+      }
     }
   }
 }
