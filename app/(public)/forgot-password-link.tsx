@@ -13,7 +13,7 @@ const ForgotPasswordLink = () => {
 
   const handleForgotPasswordPress = () => {
     // Navigate to the Forgot Password screen or perform your desired action
-    navigation.navigate('ForgotPassword')
+    navigation.navigate('forgotPassword')
   }
 
   return (
