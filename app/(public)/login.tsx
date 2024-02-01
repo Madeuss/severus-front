@@ -16,6 +16,8 @@ export default function Login() {
     keyPrefix: 'pages.login',
   })
 
+  console.log('huhuhi')
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -36,7 +38,6 @@ export default function Login() {
                 setForm({ ...form, email: text })
               }}
               value={form.email}
-              mode="outlined"
               label={t('form.email_label')}
               textContentType="emailAddress"
             />
@@ -46,7 +47,6 @@ export default function Login() {
                 setForm({ ...form, password: text })
               }}
               value={form.password}
-              mode="outlined"
               label={t('form.password_label')}
               secureTextEntry
             />
