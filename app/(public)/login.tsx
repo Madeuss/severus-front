@@ -16,6 +16,8 @@ export default function Login() {
     keyPrefix: 'pages.login',
   })
 
+  console.log('huhuhi')
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
