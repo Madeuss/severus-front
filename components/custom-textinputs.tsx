@@ -1,13 +1,12 @@
 import { View, Text, TextInput, StyleSheet, TextInputProps } from 'react-native'
 
 interface Props {
-  placeholder: string
+  placeholder?: string
   label: string
   value: string
-  onChange: () => void
 }
 
-const Input = ({ label, placeholder, value, onChange, ...props }: Props & TextInputProps) => {
+const Input = ({ label, placeholder, value, ...props }: Props & TextInputProps) => {
   return (
     <View>
       <View style={styles.labelContainer}>
@@ -17,7 +16,7 @@ const Input = ({ label, placeholder, value, onChange, ...props }: Props & TextIn
         <TextInput
           style={styles.input}
           placeholder={placeholder}
-          onChangeText={onChange}
+          onChangeText={props.onChangeText}
           value={value}
           {...props}
         />
