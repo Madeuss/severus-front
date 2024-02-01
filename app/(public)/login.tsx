@@ -16,13 +16,6 @@ export default function Login() {
   const { t } = useTranslation('', {
     keyPrefix: 'pages.login',
   })
-  const navigation = useNavigation()
-  const handleGoToRegister = () => {
-    // Navigate to the Forgot Password screen or perform your desired action
-    navigation.navigate('register')
-  }
-
-  console.log('huhuhi')
 
   return (
     <KeyboardAvoidingView
