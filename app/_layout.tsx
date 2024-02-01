@@ -5,8 +5,6 @@ import { I18nextProvider } from 'react-i18next'
 import { Text } from 'react-native'
 import i18n from '~/utils/i18n'
 
-// const CLERK_PUBLISHABLE_KEY = 'pk_test_dG91Y2hpbmctYmVkYnVnLTQ0LmNsZXJrLmFjY291bnRzLmRldiQ'
-
 const InitialLayout = () => {
   const isLoaded = true
   const isSignedIn = false
