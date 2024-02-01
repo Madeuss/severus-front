@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
     color: colors.neutral[400],
     fontFamily: 'Montserrat-Regular',
     fontSize: 14,
-    // fontWeight: '500',
   },
   forgetPwd: {
     alignItems: 'flex-end',
@@ -49,8 +48,17 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   arrowIcon: { position: 'absolute', right: 12 },
-  registerBox: { marginTop: 22, alignItems: 'center' },
-  noAccountText: { fontWeight: 'bold', color: colors.neutral[100] },
+  registerBox: {
+    marginTop: 22,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: 4,
+  },
+  noAccountText: {
+    fontWeight: 'bold',
+    color: colors.neutral[100],
+  },
   registerText: { color: colors.secondary.main, textDecorationLine: 'none' },
 })
 
