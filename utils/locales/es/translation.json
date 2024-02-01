@@ -1,0 +1,16 @@
+{
+  "pages": {
+    "login": {
+      "title": "Bienvenido de nuevo",
+      "subtitle": "Inicia sesión para continuar",
+      "form": {
+        "email_label": "Correo electrónico",
+        "password_label": "Contraseña",
+        "sign_in": "Iniciar sesión",
+        "no_account": "¿No tienes una cuenta?",
+        "register": "Registrarse",
+        "forgot_pwd": "¿Olvidaste la contraseña?"
+      }
+    }
+  }
+}

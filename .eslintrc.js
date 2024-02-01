@@ -1,0 +1,71 @@
+module.exports = {
+  parser: '@typescript-eslint/parser',
+  env: {
+    browser: true,
+    es6: true,
+    jest: true,
+    node: true,
+  },
+  extends: [
+    'prettier',
+    'eslint-config-prettier',
+    'plugin:react/recommended',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:import/recommended',
+  ],
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
+  },
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 2022,
+    sourceType: 'module',
+  },
+  plugins: ['react', 'jest', '@typescript-eslint'],
+  rules: {
+    semi: 'off',
+    'react/prop-types': 'off',
+    'guard-for-in': 'off',
+    'implicit-arrow-linebreak': 'off',
+    'no-shadow': 'off',
+    'no-restricted-syntax': 'off',
+    'jest/no-disabled-tests': 'warn',
+    'jest/no-focused-tests': 'error',
+    'jest/no-identical-title': 'error',
+    'jest/prefer-to-have-length': 'warn',
+    'jest/valid-expect': 'error',
+    'comma-dangle': 'off',
+    'react/no-array-index-key': 'off',
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+    'import/extensions': [1, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+    'no-console': 'off',
+    'react/state-in-constructor': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'arrow-body-style': 'off',
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': ['off'],
+    '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        caughtErrorsIgnorePattern: '^_',
+      },
+    ],
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        paths: ['app/javascript', 'src'],
+      },
+    },
+  },
+}

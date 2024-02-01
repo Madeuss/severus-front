@@ -1,0 +1,16 @@
+{
+  "pages": {
+    "login": {
+      "title": "Bem-vindo de volta",
+      "subtitle": "Faça login para continuar",
+      "form": {
+        "email_label": "E-mail",
+        "password_label": "Senha",
+        "sign_in": "Entrar",
+        "no_account": "Não tem uma conta?",
+        "register": "Registrar",
+        "forgot_pwd": "Esqueceu a senha?"
+      }
+    }
+  }
+}

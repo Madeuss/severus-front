@@ -1,0 +1,16 @@
+{
+  "pages": {
+    "login": {
+      "title": "Welcome back",
+      "subtitle": "Sign in to continue",
+      "form": {
+        "email_label": "Email",
+        "password_label": "Password",
+        "sign_in": "Sign In",
+        "no_account": "Don't have an account?",
+        "register": "Register",
+        "forgot_pwd": "Forgot password?"
+      }
+    }
+  }
+}

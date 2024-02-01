@@ -7,10 +7,14 @@ import styles from './styles'
 
 import colors from '~/colors'
 import Input from '~/components/custom-textinputs'
-import ForgotPasswordLink from '~/components/forget-password-link'
+import ForgotPasswordLink from '~/app/(public)/forgot-password-link'
+import { useTranslation } from 'react-i18next'
 
 export default function Login() {
   const [form, setForm] = useState({ email: '', password: '' })
+  const { t } = useTranslation('', {
+    keyPrefix: 'pages.login',
+  })
 
   return (
     <KeyboardAvoidingView
@@ -22,8 +26,8 @@ export default function Login() {
 
         <View style={styles.form}>
           <View>
-            <Text style={styles.baseText}>Welcome back</Text>
-            <Text style={styles.subtitle}>Sign in to continue</Text>
+            <Text style={styles.baseText}>{t('title')}</Text>
+            <Text style={styles.subtitle}>{t('subtitle')}</Text>
           </View>
 
           <View style={styles.inputsArea}>
@@ -33,7 +37,7 @@ export default function Login() {
               }}
               value={form.email}
               mode="outlined"
-              label="Email"
+              label={t('form.email_label')}
               textContentType="emailAddress"
             />
 
@@ -43,7 +47,7 @@ export default function Login() {
               }}
               value={form.password}
               mode="outlined"
-              label="Password"
+              label={t('form.password_label')}
               secureTextEntry
             />
           </View>
@@ -54,7 +58,7 @@ export default function Login() {
 
         <TouchableOpacity onPress={() => {}}>
           <View style={styles.signInButton}>
-            <Text style={styles.submitText}>Sign In</Text>
+            <Text style={styles.submitText}>{t('form.sign_in')}</Text>
             <Feather
               name="arrow-right"
               size={24}
@@ -66,7 +70,7 @@ export default function Login() {
 
         <View style={styles.registerBox}>
           <Text style={styles.noAccountText}>
-            Don't have an account? <Text style={styles.registerText}>Register</Text>
+            {t('form.no_account')} <Text style={styles.registerText}>{t('form.register')}</Text>
           </Text>
         </View>
       </View>
