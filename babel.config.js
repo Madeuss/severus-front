@@ -1,6 +1,6 @@
 module.exports = function (api) {
   api.cache(true)
-  const plugins = []
+  const plugins = [['module:react-native-dotenv']]
 
   plugins.push('nativewind/babel')
 

@@ -11,7 +11,7 @@ const ForgotPasswordLink = () => {
   })
 
   const handleForgotPasswordPress = () => {
-    router.replace('/forgot-password')
+    router.push('/forgot-password')
   }
 
   return (

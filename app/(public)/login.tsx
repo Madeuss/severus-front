@@ -9,20 +9,32 @@ import colors from '~/colors'
 import Input from '~/components/custom-textinputs'
 import ForgotPasswordLink from '~/app/(public)/forgot-password-link'
 import { useTranslation } from 'react-i18next'
-import { Link } from 'expo-router'
+import login from '~/services/login'
+import { Link, router } from 'expo-router'
+import useStorage from '~/hooks/useStorage'
 
 export default function Login() {
   const [form, setForm] = useState({ email: '', password: '' })
+  const [isLoading, setIsLoading] = useState(false)
+  const [formInvalid, setFormInvalid] = useState(false)
   const { t } = useTranslation('', {
     keyPrefix: 'pages.login',
   })
-  const navigation = useNavigation()
-  const handleGoToRegister = () => {
-    // Navigate to the Forgot Password screen or perform your desired action
-    navigation.navigate('register')
-  }
+  const storage = useStorage()
 
-  console.log('huhuhi')
+  const submitLogin = async () => {
+    setIsLoading(true)
+
+    const { statusCode, response } = await login(form)
+
+    if (response) {
+      storage.saveItem('accessToken', response.access_token)
+      router.push('/(auth)/')
+    }
+
+    if (statusCode === 401) setFormInvalid(true)
+    setIsLoading(false)
+  }
 
   return (
     <KeyboardAvoidingView
@@ -62,7 +74,7 @@ export default function Login() {
           <ForgotPasswordLink />
         </View>
 
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity onPress={submitLogin}>
           <View style={styles.signInButton}>
             <Text style={styles.submitText}>{t('form.sign_in')}</Text>
             <Feather
