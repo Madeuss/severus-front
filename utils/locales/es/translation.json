@@ -19,7 +19,9 @@
         "username_label": "Apodo",
         "email_label": "Correo electrónico",
         "password_label": "Contraseña",
-        "register": "Crear cuenta"
+        "register": "Crear cuenta",
+        "have_account": "¿Ya tienes una cuenta?",
+        "login": "Iniciar sesión"
       }
     }
   }

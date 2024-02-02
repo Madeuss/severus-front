@@ -19,7 +19,9 @@
         "username_label": "Username",
         "email_label": "Email",
         "password_label": "Password",
-        "register": "Register"
+        "register": "Register",
+        "have_account": "Already have an account?",
+        "login": "Log in"
       }
     }
   }
