@@ -3,7 +3,7 @@ import LoginIllustration from 'assets/login-illustration.svg'
 import { useState } from 'react'
 import { KeyboardAvoidingView, Platform, Text, TouchableOpacity, View } from 'react-native'
 
-import styles from './styles'
+import { styles } from './styles'
 import colors from '~/colors'
 
 import Input from '~/components/custom-textinputs'
