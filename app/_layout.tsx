@@ -3,25 +3,29 @@ import { Slot, useRouter, useSegments } from 'expo-router'
 import { useEffect } from 'react'
 import { I18nextProvider } from 'react-i18next'
 import { Text } from 'react-native'
+import useStorage from '~/hooks/useStorage'
 import i18n from '~/utils/i18n'
 
 const InitialLayout = () => {
-  const isLoaded = true
-  const isSignedIn = false
+  const storage = useStorage()
   const segments = useSegments()
   const router = useRouter()
 
-  useEffect(() => {
-    if (!isLoaded) return
+  const redirectToCorrectRoute = async () => {
+    const accessToken = await storage.getItem('accessToken')
 
-    const inTabsGroup = segments[0] === '(tabs)'
+    const inAuthArea = segments[0] === '(auth)'
 
-    if (isSignedIn && !inTabsGroup) {
-      router.replace('/home')
-    } else if (!isSignedIn) {
-      router.replace('/register')
+    if (accessToken && !inAuthArea) {
+      router.replace('/(auth)/')
+    } else if (!accessToken) {
+      router.replace('/login')
     }
-  }, [isSignedIn])
+  }
+
+  useEffect(() => {
+    redirectToCorrectRoute()
+  }, [storage])
 
   return <Slot />
 }
