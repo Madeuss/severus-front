@@ -1,6 +1,6 @@
 import { useFonts } from 'expo-font'
 import { Slot, useRouter, useSegments } from 'expo-router'
-import { useEffect } from 'react'
+import { useLayoutEffect } from 'react'
 import { I18nextProvider } from 'react-i18next'
 import { Text } from 'react-native'
 import useStorage from '~/hooks/useStorage'
@@ -18,12 +18,12 @@ const InitialLayout = () => {
 
     if (accessToken && !inAuthArea) {
       router.replace('/(auth)/feed')
-    } else if (!accessToken && inAuthArea) {
+    } else if (!accessToken) {
       router.replace('/login')
     }
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     redirectToCorrectRoute()
   }, [storage])
 
