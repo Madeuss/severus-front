@@ -1,59 +1,66 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome'
-import { Link, Tabs } from 'expo-router'
-import { Pressable, StyleSheet } from 'react-native'
-
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name']
-  color: string
-}) {
-  return <FontAwesome size={28} style={styles.tabBarIcon} {...props} />
-}
+import { MaterialIcons } from '@expo/vector-icons'
+import { Tabs } from 'expo-router'
+import colors from '~/colors'
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: 'black',
+        tabBarActiveBackgroundColor: colors.primary.main,
+        tabBarActiveTintColor: colors.neutral[100],
         headerShown: false,
+        tabBarShowLabel: false,
+        tabBarItemStyle: {
+          borderRadius: 12,
+          marginVertical: 14,
+        },
+        tabBarStyle: {
+          backgroundColor: colors.neutral[600],
+          borderTopLeftRadius: 24,
+          borderTopRightRadius: 24,
+          height: 104,
+          paddingBottom: 0,
+        },
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="groups"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color="gray"
-                    style={[styles.headerRight, { opacity: pressed ? 0.5 : 1 }]}
-                  />
-                )}
-              </Pressable>
-            </Link>
+          tabBarIcon: () => <MaterialIcons name="groups" size={28} color={colors.neutral[200]} />,
+        }}
+      />
+      <Tabs.Screen
+        name="chat"
+        options={{
+          tabBarIcon: () => (
+            <MaterialIcons name="mark-chat-unread" size={28} color={colors.neutral[200]} />
           ),
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="feed"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: () => (
+            <MaterialIcons name="add-to-queue" size={28} color={colors.neutral[200]} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="notifications"
+        options={{
+          tabBarIcon: () => (
+            <MaterialIcons name="notifications" size={28} color={colors.neutral[200]} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          tabBarIcon: () => (
+            <MaterialIcons name="account-circle" size={28} color={colors.neutral[200]} />
+          ),
         }}
       />
     </Tabs>
   )
 }
-
-const styles = StyleSheet.create({
-  headerRight: {
-    marginRight: 15,
-  },
-  tabBarIcon: {
-    marginBottom: -3,
-  },
-})

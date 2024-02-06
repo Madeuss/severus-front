@@ -29,7 +29,7 @@ export default function Login() {
 
     if (response) {
       storage.saveItem('accessToken', response.access_token)
-      router.push('/(auth)/')
+      router.push('/(auth)/feed')
     }
 
     if (statusCode === 401) setFormInvalid(true)

@@ -17,8 +17,8 @@ const InitialLayout = () => {
     const inAuthArea = segments[0] === '(auth)'
 
     if (accessToken && !inAuthArea) {
-      router.replace('/(auth)/')
-    } else if (!accessToken) {
+      router.replace('/(auth)/feed')
+    } else if (!accessToken && inAuthArea) {
       router.replace('/login')
     }
   }
