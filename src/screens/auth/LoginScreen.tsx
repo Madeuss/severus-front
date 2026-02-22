@@ -8,13 +8,26 @@ import {
   ScrollView,
 } from 'react-native'
 import { Input, Button } from '@/components'
+import login from '@/services/login'
+import { useAuth } from '@/contexts/AuthContext'
 
 export function LoginScreen() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [formInvalid, setFormInvalid] = useState(false)
 
-  function handleLogin() {
-    console.log('Tentando logar com:', email, password)
+  const { setUserAsAuthenticated } = useAuth()
+
+  const handleLogin = async () => {
+    const form = { email, password }
+
+    const { statusCode, response } = await login(form)
+
+    if (response) {
+      setUserAsAuthenticated(response.access_token)
+    }
+
+    if (statusCode === 401) setFormInvalid(true)
   }
 
   return (
