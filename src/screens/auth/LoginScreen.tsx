@@ -8,7 +8,6 @@ import {
   ScrollView,
 } from 'react-native'
 import { Input, Button } from '@/components'
-import login from '@/services/login'
 import { useAuth } from '@/contexts/AuthContext'
 
 export function LoginScreen() {
@@ -16,18 +15,19 @@ export function LoginScreen() {
   const [password, setPassword] = useState('')
   const [formInvalid, setFormInvalid] = useState(false)
 
-  const { setUserAsAuthenticated } = useAuth()
+  const { signIn } = useAuth()
 
   const handleLogin = async () => {
+    if (!email || !password) return
+
     const form = { email, password }
 
-    const { statusCode, response } = await login(form)
+    const result = await signIn(form)
 
-    if (response) {
-      setUserAsAuthenticated(response.access_token)
+    if (result.error) {
+      // TOAST ERROR
+      console.log(result.error)
     }
-
-    if (statusCode === 401) setFormInvalid(true)
   }
 
   return (
