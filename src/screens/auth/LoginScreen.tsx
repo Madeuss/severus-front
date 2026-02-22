@@ -9,13 +9,18 @@ import {
 } from 'react-native'
 import { Input, Button } from '@/components'
 import { useAuth } from '@/contexts/AuthContext'
+import { useNavigation } from '@react-navigation/native'
 
 export function LoginScreen() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [formInvalid, setFormInvalid] = useState(false)
 
   const { signIn } = useAuth()
+  const navigate = useNavigation()
+
+  const goToRegister = () => {
+    navigate.navigate('Register')
+  }
 
   const handleLogin = async () => {
     if (!email || !password) return
@@ -73,7 +78,7 @@ export function LoginScreen() {
 
           <View className="flex-row justify-center mt-8">
             <Text className="text-slate-400">Não tem uma conta? </Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={goToRegister}>
               <Text className="text-emerald-500 font-bold">Cadastre-se</Text>
             </TouchableOpacity>
           </View>
