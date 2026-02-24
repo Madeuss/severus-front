@@ -9,6 +9,8 @@ import {
 } from 'react-native'
 import { Input, Button } from '@/components'
 import { useNavigation } from '@react-navigation/native'
+import register from '@/services/register'
+import { EyeClosed, Eye } from 'lucide-react-native'
 
 export function RegisterScreen() {
   const [form, setForm] = useState({
@@ -16,6 +18,7 @@ export function RegisterScreen() {
     email: '',
     password: '',
   })
+  const [showPassword, setShowPassword] = useState(false)
 
   const navigate = useNavigation()
 
@@ -24,7 +27,19 @@ export function RegisterScreen() {
   }
 
   const handleRegister = async () => {
-    console.log(form)
+    try {
+      const result = await register(form)
+
+      if (result.hasError) {
+        console.error('Registration failed:', result.statusCode)
+        return
+      }
+
+      console.log('Registration successful:', result.response)
+      navigate.navigate('Login')
+    } catch (error) {
+      console.error('Unexpected error:', error)
+    }
   }
 
   return (
@@ -65,9 +80,11 @@ export function RegisterScreen() {
             <Input
               label="Senha"
               placeholder="••••••••"
-              secureTextEntry
+              secureTextEntry={!showPassword}
               value={form.password}
               onChangeText={(value) => setForm({ ...form, password: value })}
+              iconRight={showPassword ? Eye : EyeClosed}
+              onPressIcon={() => setShowPassword(!showPassword)}
             />
 
             <Button title="Cadastrar" onPress={handleRegister} />
