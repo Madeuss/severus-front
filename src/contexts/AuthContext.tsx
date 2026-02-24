@@ -1,15 +1,15 @@
 import useStorage from '@/hooks/useStorage.ts'
 import login, { LoginForm } from '@/services/login'
+import logout from '@/services/logout'
 import React, { createContext, useState, useContext, useEffect } from 'react'
 
 interface AuthContextData {
   isAuthenticated: boolean
   isLoading: boolean
   signIn: (credentials: LoginForm) => Promise<{ error?: string }>
-  // signOut: () => Promise<{
-  //   error?: string
-  // }>
-  signOut: () => void
+  signOut: () => Promise<{
+    error?: string
+  }>
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
@@ -44,22 +44,22 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   }
 
   const signOut = async () => {
-    // const currentAccessToken = await storage.getItem('accessToken')
+    const currentAccessToken = await storage.getItem('accessToken')
 
-    // if (!currentAccessToken) {
-    //   setIsAuthenticated(false)
-    //   return { error: 'Nenhum token de acesso encontrado.' }
-    // }
+    if (!currentAccessToken) {
+      setIsAuthenticated(false)
+      return { error: 'Nenhum token de acesso encontrado.' }
+    }
 
-    // const { response } = await logout(currentAccessToken)
+    const { response } = await logout(currentAccessToken)
 
-    // if (response) {
-    await storage.removeItem('accessToken')
-    setIsAuthenticated(false)
-    // return {}
-    // }
+    if (response) {
+      await storage.removeItem('accessToken')
+      setIsAuthenticated(false)
+      return {}
+    }
 
-    // return { error: 'Erro ao tentar sair do Severus' }
+    return { error: 'Erro ao tentar sair da aplicação.' }
   }
 
   return (

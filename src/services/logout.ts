@@ -9,7 +9,15 @@ interface LoginResponse {
 
 const logout = async (accessToken: string): Promise<LoginResponse> => {
   try {
-    const response = await severusApi.post('/logout', accessToken)
+    const response = await severusApi.post(
+      '/logout',
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      },
+    )
 
     return { response: response.data }
   } catch (err) {
